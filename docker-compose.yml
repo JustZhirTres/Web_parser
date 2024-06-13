@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - DB_URL=sqlite:///database.db
+      - LOG_FILE=logs.log
+      - LOG_LEVEL=INFO
+      - WEB_PORT=8000
+    command: python parsing.py
+
+volumes:
+  database:
